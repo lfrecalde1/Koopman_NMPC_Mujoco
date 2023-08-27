@@ -105,7 +105,7 @@ def main(control_pub):
     # Initial Values System
     # Read Matlab Data
     # Simulation time parameters
-    t_s = 0.02
+    t_s = 0.018
     tf = 20
     t = np.arange(0, tf+t_s, t_s, dtype=np.double)
 
@@ -132,16 +132,16 @@ def main(control_pub):
     # Desired Values
     xref = np.zeros((9, t.shape[0]), dtype = np.double)
     # Linear Velocities
-    xref[0,:] = 2*np.cos(0.8*t)*np.sin(0.5*t)+0.3*np.cos(0.7*t)*np.cos(0.3*t)
-    xref[1,:] =  2.5*np.sin(0.8*t)*np.sin(0.5*t)+0*np.cos(0.7*t)*np.cos(0.3*t)
-    xref[2,:] = 1.5*np.cos(0.8*t)*np.sin(0.5*t)+0.3*np.cos(0.7*t)*np.cos(0.3*t)
+    xref[0,:] = 2*np.cos(0.4*t)*np.sin(0.5*t)+0.3*np.cos(0.7*t)*np.cos(0.3*t)
+    xref[1,:] =  2.5*np.sin(0.4*t)*np.sin(0.5*t)+0*np.cos(0.7*t)*np.cos(0.3*t)
+    xref[2,:] =  2 + 1.5*np.cos(0.4*t)*np.sin(0.5*t)+0.3*np.cos(0.7*t)*np.cos(0.3*t)
     # Angular Velocities
     xref[3,:] = 0.0
     xref[4,:] =  0.0
     xref[5,:] = 0.0
     xref[6,:] = 0.0
     xref[7,:] =  0.0
-    xref[8,:] = 0.5*np.sin(0.5*t)*np.sin(0.5*t)+0*np.cos(0.7*t)*np.cos(0.3*t)
+    xref[8,:] = 0.0*np.sin(0.5*t)*np.sin(0.5*t)+0*np.cos(0.7*t)*np.cos(0.3*t)
     xref_lift = np.zeros((31, t.shape[0]), dtype = np.double)
     for k in range(0, xref.shape[1]):
         xref_lift[0:27, k] = lift_Fun(xref[:, k], cent_a, cent_l, cent_lz)
@@ -151,7 +151,7 @@ def main(control_pub):
     hp = np.zeros((6, t.shape[0]+1 - N_prediction), dtype = np.double)
 
 
-    for k in range(0, 100):
+    for k in range(0, 50):
         tic = time.time()
         ## Get Contol Action or nothing
         ref_drone = get_reference([5.8, 0, 0, 0], ref_drone)
@@ -183,10 +183,10 @@ def main(control_pub):
     x_lift = lift_Fun(x[:, 0], cent_a, cent_l, cent_lz)
 
     # Limits Control values
-    z_max = 15
+    z_max = 12
     phi_max = 0.15
     theta_max = 0.15
-    psi_p_max = 1.5
+    psi_p_max = 1.0
 
     phi_min = -phi_max
     theta_min = -theta_max

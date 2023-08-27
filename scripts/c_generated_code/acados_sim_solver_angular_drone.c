@@ -77,7 +77,7 @@ int angular_drone_acados_sim_create(sim_solver_capsule * capsule)
     bool tmp_bool;
 
     
-    double Tsim = 0.0196078431372549;
+    double Tsim = 0.017543859649122806;
 
     
 

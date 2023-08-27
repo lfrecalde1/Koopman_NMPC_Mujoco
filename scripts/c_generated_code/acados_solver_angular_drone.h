@@ -63,7 +63,7 @@
 #define ANGULAR_DRONE_NY0    31
 #define ANGULAR_DRONE_NY     31
 #define ANGULAR_DRONE_NYN    27
-#define ANGULAR_DRONE_N      51
+#define ANGULAR_DRONE_N      57
 #define ANGULAR_DRONE_NH     0
 #define ANGULAR_DRONE_NPHI   0
 #define ANGULAR_DRONE_NHN    0

@@ -115,7 +115,7 @@ def create_ocp_solver_description(x0, N_horizon, t_horizon, z_max, z_min, phi_ma
 
     Q_mat[12, 12] = 1
     Q_mat[13, 13] = 1
-    Q_mat[14, 14] = 115
+    Q_mat[14, 14] = 20
     R_mat = 1 * np.diag([(1/z_max), (10/phi_max), (10/theta_max), (1/psi_p_max)])
 
     ocp.cost.cost_type = "LINEAR_LS"
